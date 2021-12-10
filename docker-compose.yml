@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  api_flask:
+    container_name: api_flask
+    image: python:3.8
+    restart: always
+    entrypoint: 'sh'
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: '-c "pip install -r requirements.txt && python app.py"'
+    env_file:
+      - .env
+    ports:
+      - "3333:3333"

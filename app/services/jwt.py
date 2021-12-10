@@ -1,5 +1,5 @@
 from flask_pyjwt import AuthManager, current_token, require_token
-from server import app
+from app.server import app
 
 
 auth_manager = AuthManager(app)
