@@ -27,3 +27,10 @@ When created a new model is required import her on the [models](app/database/mod
 ```bash
 pipenv run migrate
 ```
+
+# Interesing in develop it
+
+- [ ] documentar swagger
+- [ ] fazer testes
+- [ ] pipeline jenkis oracle cloud
+- [ ] deploy
