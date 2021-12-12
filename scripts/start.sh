@@ -1,4 +1,6 @@
+# EXPORT HOST TO RUN FLASK APP
+export FLASK_ENV=production
 export FLASK_RUN_PORT=3333 
 export FLASK_APP=app
 export IS_DEV='0'
-flask run
+flask run --host '0.0.0.0'
