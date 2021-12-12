@@ -9,10 +9,12 @@ flask-restful = "*"
 flask-pyjwt = "*"
 flask-cors = "*"
 python-dotenv = "*"
+bcrypt = "*"
 
 [dev-packages]
 autopep8 = "*"
 pipenv = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.8"
@@ -20,4 +22,6 @@ python_version = "3.8"
 [scripts]
 start = "env IS_DEV='0' python app.py"
 dev = "env IS_DEV='1' python app.py"
+test = "python -m unittest"
+test_coverage = "bash show_coverage.sh"
 requirements = "sh update_requirements.sh"
