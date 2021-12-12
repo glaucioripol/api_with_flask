@@ -1,16 +1,44 @@
 version: "3.7"
 
 services:
+  postgres:
+    container_name: api_flask_database
+    image: postgres
+    # restart: always
+    volumes:
+      - ./postgres/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: senha_secreta
+      POSTGRES_DB: api_flask
+    networks:
+      api_flask_network:
+        ipv4_address: 172.18.10.1
+
   api_flask:
     container_name: api_flask
     image: python:3.8
-    restart: always
+    # restart: always
     entrypoint: 'sh'
     working_dir: /app
     volumes:
       - .:/app
-    command: '-c "pip install -r requirements.txt && python app.py"'
+    command: '-c "pip install -r requirements.txt && pipenv run start"'
     env_file:
       - .env
     ports:
       - "3333:3333"
+    depends_on: 
+      - postgres
+    networks:
+      api_flask_network:
+        ipv4_address: 172.18.10.2
+
+networks:
+  api_flask_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.10.0/16
