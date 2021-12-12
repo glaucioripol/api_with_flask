@@ -1,3 +1,4 @@
+import sys
 from app.config import Configuration
 from app.server import app, api
 from app.resources.users import Users

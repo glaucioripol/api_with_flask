@@ -1,8 +1,5 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from app.server import app
+from flask_sqlalchemy import SQLAlchemy
 
-from config import Configuration
-
-Base = declarative_base()
-
-db_engine = create_engine(Configuration.db_string_connection)
+database = SQLAlchemy(app)
+session_database = database.session

@@ -1,13 +1,13 @@
-from . import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy.sql.expression import null
+from app.database import database
 
 
-class UsersModel(Base):
+class UsersModel(database.Model):
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    password = Column(String)
+    id = database.Column(database.Integer, primary_key=True)
+    name = database.Column(database.String(120), nullable=False)
+    password = database.Column(database.String(120), nullable=False)
 
     def __repr__(self):
         return f'User {self.name}'

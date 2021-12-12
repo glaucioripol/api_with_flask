@@ -10,7 +10,7 @@ flask-pyjwt = "*"
 flask-cors = "*"
 python-dotenv = "*"
 bcrypt = "*"
-sqlalchemy = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 autopep8 = "*"
