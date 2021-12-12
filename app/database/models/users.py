@@ -1,4 +1,3 @@
-from sqlalchemy.sql.expression import null
 from app.database import database
 
 
@@ -8,13 +7,17 @@ class UsersModel(database.Model):
     id = database.Column(database.Integer, primary_key=True)
     name = database.Column(database.String(120), nullable=False)
     password = database.Column(database.String(120), nullable=False)
-
-    def __repr__(self):
-        return f'User {self.name}'
+    email = database.Column(database.String(120), nullable=False)
+    spends = database.relationship(
+        'spends',
+        backref='users',
+        lazy=True
+    )
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
-            'password': self.password
+            'email': self.email,
+            'spends': [spend.to_dict() for spend in self.spends]
         }
