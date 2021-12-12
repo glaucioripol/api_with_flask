@@ -3,8 +3,7 @@ from __future__ import with_statement
 import logging
 from logging.config import fileConfig
 
-from app.database.models.users import UsersModel
-from app.database.models.spends import SpendsModel
+from app.database.models import *
 from flask import current_app
 
 from alembic import context
