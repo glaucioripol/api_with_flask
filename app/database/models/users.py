@@ -13,11 +13,24 @@ class UsersModel(database.Model):
         backref='users',
         lazy=True
     )
+    created_at = database.Column(
+        database.DateTime,
+        nullable=False,
+        default=database.func.now()
+    )
+    updated_at = database.Column(
+        database.DateTime,
+        nullable=False,
+        default=database.func.now(),
+        onuppoate=database.func.now()
+    )
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             'email': self.email,
-            'spends': [spend.to_dict() for spend in self.spends]
+            'spends': [spend.to_dict() for spend in self.spends],
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
